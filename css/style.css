@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.container-step-1 {
+    width: 50%;
+    margin: auto;
+}
+.container-step-2 {
+    width: 50%;
+    margin: auto;
+    display: flex;    
+}
