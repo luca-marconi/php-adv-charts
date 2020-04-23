@@ -11,9 +11,9 @@
 .container-step-1 {
     width: 50%;
     margin: auto;
+    padding: 50px 0;
 }
 .container-step-2 {
     width: 50%;
-    margin: auto;
-    display: flex;    
+    display: flex;
 }
