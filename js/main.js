@@ -18,8 +18,11 @@ $(document).ready(function() {
             method: 'GET',
             success: function (data) {
                 var mesi = ['Gennario', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-                LineChartStep2(mesi, data);
-                PieChartStep2(data);
+                var dati = extractData(data);
+                var datiLine = dati.line;
+                var datiPie = dati.pie;
+                LineChartStep2(mesi, datiLine);
+                PieChartStep2(datiPie);
             },
             error: function (err) {
                 alert('Errore')
@@ -43,29 +46,29 @@ $(document).ready(function() {
             });
         };
 
-        function LineChartStep2(mesi, data) {
+        function LineChartStep2(mesi, datiLine) {
             var ctx = $('#line-chart-step-2');
             var chart = new Chart(ctx, {
-                type: data.fatturato['type'],
+                type: datiLine.type,
                 data: {
                     labels: mesi,
                     datasets: [{
                         label: 'Vendite - Step 2',
                         backgroundColor: '#ef5350',
                         borderColor: '#b61827',
-                        data: data.fatturato['data']
+                        data: datiLine.data
                     }]
                 },
             });
         };
 
-        function PieChartStep2(data) {
+        function PieChartStep2(datiPie) {
             var ctx = $('#pie-chart-step-2');
-            var graficoAgenti = data.fatturato_by_agent;
-            var labelsKey = Object.keys(graficoAgenti.data);
-            var dataValue = Object.values(graficoAgenti.data);
+
+            var labelsKey = Object.keys(datiPie.data);
+            var dataValue = Object.values(datiPie.data);
             var chart = new Chart(ctx, {
-                type: data.fatturato_by_agent['type'],
+                type: datiPie.type,
                 data: {
                     datasets: [{
                         data: dataValue,
@@ -76,6 +79,20 @@ $(document).ready(function() {
                 },
             });
         };
+
+        function extractData(data) {
+            for (var key in data) {
+                if (data[key]['type'] == 'line') {
+                    var dataLine = data[key];
+                } else {
+                    var dataPie = data[key];
+                }
+            }
+            return {
+                line: dataLine,
+                pie: dataPie
+            };
+        }
 
 
 
