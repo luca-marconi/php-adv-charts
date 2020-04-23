@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-
+// ------------- INIZIO STEP 1 ----------------//
         $.ajax({
             url: 'server/server-step-1.php',
             method: 'GET',
@@ -12,24 +12,6 @@ $(document).ready(function() {
                 alert('Errore')
             }
         });
-
-        $.ajax({
-            url: 'server/server-step-2.php',
-            method: 'GET',
-            success: function (data) {
-                var mesi = ['Gennario', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
-                var dati = extractData(data);
-                var datiLine = dati.line;
-                var datiPie = dati.pie;
-                LineChartStep2(mesi, datiLine);
-                PieChartStep2(datiPie);
-            },
-            error: function (err) {
-                alert('Errore')
-            }
-        });
-
-
         function LineChartStep1(mesi, data) {
             var ctx = $('#line-chart-step-1');
             var chart = new Chart(ctx, {
@@ -45,7 +27,24 @@ $(document).ready(function() {
                 },
             });
         };
+//-------------- FINE STEP 1 -----------------//
 
+// ------------- INIZIO STEP 2 ----------------//
+        $.ajax({
+            url: 'server/server-step-2.php',
+            method: 'GET',
+            success: function (data) {
+                var mesi = ['Gennario', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+                var dati = extractData(data);
+                var datiLine = dati.line;
+                var datiPie = dati.pie;
+                LineChartStep2(mesi, datiLine);
+                PieChartStep2(datiPie);
+            },
+            error: function (err) {
+                alert('Errore')
+            }
+        });
         function LineChartStep2(mesi, datiLine) {
             var ctx = $('#line-chart-step-2');
             var chart = new Chart(ctx, {
@@ -61,7 +60,6 @@ $(document).ready(function() {
                 },
             });
         };
-
         function PieChartStep2(datiPie) {
             var ctx = $('#pie-chart-step-2');
 
@@ -79,6 +77,7 @@ $(document).ready(function() {
                 },
             });
         };
+//-------------- FINE STEP 2 -----------------//
 
         function extractData(data) {
             for (var key in data) {
