@@ -9,15 +9,18 @@
     </head>
     <body>
 
+        <button><a href="http://localhost:8888/boolean/PHP/php-adv-charts/index_ver_php.php">PHP Version</a></button>
     <div class="container">
-        <div class="container-step-1">
+        <!-- <div class="container-step-1">
             <canvas id="line-chart-step-1"></canvas>
         </div>
         <div class="container-step-2">
             <canvas id="line-chart-step-2"></canvas>
             <canvas id="pie-chart-step-2"></canvas>
-        </div>
+        </div> -->
+        <h2>Versione Javascript</h2>
         <div class="container-step-3">
+
             <canvas id="line-chart-step-3"></canvas>
             <canvas id="pie-chart-step-3"></canvas>
             <canvas id="multiline-chart-step-3"></canvas>
