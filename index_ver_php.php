@@ -12,12 +12,19 @@
         <button><a href="http://localhost:8888/boolean/PHP/php-adv-charts/">Javascript Version</a></button>
     <div class="container">
 
+        <?php $accesso = $_GET['livello']; ?>
         <h2>Versione PHP</h2>
         <div class="container-step-3">
-
-            <canvas id="php-line-chart-step-3"></canvas>
-            <canvas id="php-pie-chart-step-3"></canvas>
-            <canvas id="php-multiline-chart-step-3"></canvas>
+                <?php if (($accesso == 'guest') || ($accesso == '')) { ?>
+                    <canvas id="php-line-chart-step-3"></canvas>
+                <?php } elseif ($accesso == 'employee') { ?>
+                    <canvas id="php-line-chart-step-3"></canvas>
+                    <canvas id="php-pie-chart-step-3"></canvas>
+                <?php } elseif ($accesso == 'clevel') { ?>
+                    <canvas id="php-line-chart-step-3"></canvas>
+                    <canvas id="php-pie-chart-step-3"></canvas>
+                    <canvas id="php-multiline-chart-step-3"></canvas>
+                <?php }; ?>
         </div>
     </div>
 

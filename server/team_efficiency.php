@@ -14,3 +14,7 @@
 
     $grafico3 = [$typeGraph, $labelGraph, $dataGraph, $accessGraph];
     echo json_encode($grafico3);
+
+
+
+ ?>

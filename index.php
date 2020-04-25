@@ -20,7 +20,7 @@
         </div> -->
         <h2>Versione Javascript</h2>
         <div class="container-step-3">
-
+            <div class="container"></div>
             <canvas id="line-chart-step-3"></canvas>
             <canvas id="pie-chart-step-3"></canvas>
             <canvas id="multiline-chart-step-3"></canvas>
